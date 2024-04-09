@@ -1,0 +1,15 @@
+<!-- feedback.component.html -->
+
+<div class="container">
+    <h2>Submit Feedback</h2>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="feedback">Feedback:</label>
+            <input type="text" class="form-control" id="feedback" [(ngModel)]="feedbackModel.feedback" name="feedback"
+                required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <!-- Displaying unsanitized HTML directly -->
+    <div [innerHTML]="feedbackHtml"></div>
+</div>

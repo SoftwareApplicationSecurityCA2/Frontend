@@ -1,0 +1,73 @@
+.create-post-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.create-post-container textarea {
+    width: 80%;
+    /* Matches width of posts-container for alignment */
+    padding: 10px;
+    margin-bottom: 10px;
+    /* Space between textarea and button */
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    /* Light grey border */
+    resize: none;
+    /* Prevents resizing, remove if you want users to resize */
+}
+
+.create-post-container button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #004494;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    &[disabled]{
+        background-color: #ccc;
+        cursor: not-allowed;
+
+        &:hover {
+            background-color: #ccc;
+        }
+    }
+}
+
+
+
+.create-post-container button:hover {
+    background-color: #00357a;
+}
+
+/* Styling for the "Create Post" button in the main container */
+.container button {
+    width: 50%;
+    /* Consistent with create post button width */
+    margin-top: 1rem;
+    /* Adds some space at the top */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #004494;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.container button:hover {
+    background-color: #00357a;
+}

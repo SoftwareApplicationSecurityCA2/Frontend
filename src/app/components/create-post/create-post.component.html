@@ -1,0 +1,11 @@
+
+
+
+<form [formGroup]="PostForm" (ngSubmit)="makePost()">
+
+<div class="create-post-container">
+    <textarea formControlName="content" placeholder="What's on your mind?"></textarea>
+    <button type="submit" [disabled]="PostForm.invalid">Post</button>
+</div>
+
+</form>

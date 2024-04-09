@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="form-card">
+        <h2>Register</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="form-group">
+
+                <!-- UserName -->
+                <label for="username">Username</label>
+                <input type="username" formControlName="username" class="form-control" id="username"
+                    placeholder="Enter username">
+                <div *ngIf=" username?.errors && username?.touched" class="invalid-feedback">
+                    <div *ngIf="username?.errors?.['required']">username is required</div>
+                </div>
+
+                <!-- Email -->
+                <label for="email">Email</label>
+                <input type="text" formControlName="email" class="form-control" id="email" placeholder="Enter email">
+                <div *ngIf=" email?.errors && email?.touched" class="invalid-feedback">
+                    <div *ngIf="email?.errors?.['required']">Email is required</div>
+                </div>
+
+                <!-- Password -->
+                <label for="password">Password</label>
+                <input type="password" formControlName="password" class="form-control" id="password"
+                    placeholder="Enter Password">
+                <div *ngIf=" password?.errors && password?.touched" class="invalid-feedback">
+                    <div *ngIf="password?.errors?.['required']">Password is required</div>
+                    <div *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters</div>
+                </div>
+
+                <!-- Confirm Password -->
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" formControlName="confirmPassword" class="form-control" id="confirm-password"
+                    placeholder="Confirm Password">
+                <div *ngIf="registerForm.errors?.['passwordMismatch'] && (password?.touched || confirmPassword?.touched)"
+                    class="invalid-feedback">
+                    Passwords must match.
+                </div>
+
+            </div>
+            <div class="button-container">
+                <button type="submit" [disabled]="registerForm.invalid">Register</button>
+                <a (click)="GoToLogin()">Already have an account? <span class="special">Login</span></a>
+            </div>
+        </form>
+
+
+    </div>
+</div>
