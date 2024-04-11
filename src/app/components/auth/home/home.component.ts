@@ -38,16 +38,5 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  logout() {
-    this.AuthService.logout(this.SessionService.getSessionId()!).subscribe(
-      () => {
-        this.SessionService.clearSession();
-        this.Router.navigate(['/login']);
-      }
-    );
-  }
-
-  submitFeedback(){
-    this.Router.navigate(['/feedback']);  
-  }
+ 
 }

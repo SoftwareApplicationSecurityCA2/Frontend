@@ -3,28 +3,29 @@ import { Login } from '../../interfaces/login';
 import { DatabaseService } from '../database/database.service';
 import { Register } from '../../interfaces/register';
 import { SessionService } from '../session/session.service';
+import { User } from '../../interfaces/user';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   private databaseService = inject(DatabaseService);
 
-  constructor() { }
+  constructor() {}
 
-
-
-  login(login: Login){
+  login(login: Login) {
     return this.databaseService.Login(login);
   }
 
-  register(userData: Register){
+  register(userData: Register) {
     return this.databaseService.register(userData);
   }
 
-  logout(sessionId: string){
+  logout(sessionId: string) {
     return this.databaseService.logout(sessionId);
   }
 
+  getSession(user:User){
+    return this.databaseService.getSession(user);
+  }
 }

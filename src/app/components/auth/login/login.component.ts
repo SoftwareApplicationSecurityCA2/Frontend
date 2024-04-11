@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { passwordMatchValidator } from '../../../functions/Validators';
 import { SessionService } from '../../../services/session/session.service';
 import { CommonModule } from '@angular/common';
+import { User } from '../../../interfaces/user';
 
 @Component({
   selector: 'app-login',
@@ -46,11 +47,15 @@ export class LoginComponent {
     };
 
     this.AuthService.login(login).subscribe({
-      next: (response) => {
+      next: (response: any) => {
+        // Get the session
+        this.AuthService.getSession(response.value[0]).subscribe((data) => {
+          this.SessionService.setSession(data);
+          this.router.navigate(['/home']);
+        });
 
-        // Redirect user or show success message
-        this.SessionService.setSession(response);
-        this.router.navigate(['/home']);
+      // this.SessionService.setSession(response);
+        // this.router.navigate(['/home']);
       },
       error: (error) => {
         console.error('Registration failed', error);

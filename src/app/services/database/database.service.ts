@@ -23,8 +23,8 @@ export class DatabaseService {
   }
 
   // Auth
-  Login(login: Login): Observable<Session> {
-    return this.http.post<Session>(`${this.baseUrl}Auth/login`, login);
+  Login(login: Login): Observable<User[]> {
+    return this.http.post<User[]>(`${this.baseUrl}Auth/login`, login);
   }
 
   register(userData: Register): Observable<any> {
@@ -47,5 +47,15 @@ export class DatabaseService {
 
   submitFeedback(feedback: Feedback): Observable<any> {
     return this.http.post(`${this.baseUrl}Feedback`, feedback);
+  }
+
+  getSession(user: User): Observable<any> {
+    console.log('user : ', user);
+    const url = `${this.baseUrl}Auth/session`;
+    return this.http.post(url, user);
+  }
+
+  getUserById(userId: number): Observable<User> {
+    return this.http.get<User>(`${this.baseUrl}Users/${userId}`);
   }
 }
